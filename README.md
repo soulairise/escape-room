@@ -4,7 +4,7 @@
 
 ## 플레이
 
-👉 **[여기서 플레이](https://USERNAME.github.io/escape-room/)** _(배포 후 주소가 채워집니다)_
+👉 **[여기서 플레이](https://soulairise.github.io/escape-room/)**
 
 또는 이 저장소를 내려받아 `index.html`을 브라우저로 열면 됩니다.
 
