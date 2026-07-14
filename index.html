@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>사라진 시계공의 공방 — 방탈출</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div id="game">
+    <!-- 상단 바 -->
+    <header id="topbar">
+      <div class="title">🕰️ 사라진 시계공의 공방</div>
+      <div class="right">
+        <button id="btn-sound" class="icon-btn" title="배경음악·효과음">🔊</button>
+        <button id="btn-voice" class="icon-btn" title="음성 내레이션">🗣️</button>
+        <div id="room-name" class="room-name">작업실</div>
+        <div id="timer" class="timer">00:00</div>
+      </div>
+    </header>
+
+    <!-- 내레이션 띠 (스토리 자막) -->
+    <div id="narration">
+      <span id="narr-speaker">📜</span>
+      <p id="narr-text"></p>
+    </div>
+
+    <!-- 게임 화면 -->
+    <main id="scene" aria-label="게임 화면"></main>
+
+    <!-- 하단 바 -->
+    <footer id="bottombar">
+      <button id="btn-inventory" class="ctrl">
+        🎒 가방 <span id="inv-count" class="badge">0</span>
+      </button>
+      <button id="btn-journal" class="ctrl">📖 일지</button>
+      <div id="toast" class="toast"></div>
+      <button id="btn-hint" class="ctrl">💡 힌트</button>
+    </footer>
+  </div>
+
+  <!-- 시작 화면 -->
+  <div id="start-screen" class="overlay show">
+    <div class="card">
+      <div class="big-emoji">🕰️</div>
+      <h1>사라진 시계공의 공방</h1>
+      <p class="story">
+        시계공 <b>엘리아스</b>가 사흘째 모습을 감췄다.<br />
+        그의 견습생인 당신은 스승을 찾아 공방에 들어섰지만,<br />
+        등 뒤에서 문이 철컥 잠겨버렸다.<br /><br />
+        스승은 <b>"잃어버린 시간을 되돌리는 시계"</b>를 만들고 있다고 했다.<br />
+        무언가 잘못된 게 분명하다. 단서를 모아 그가 남긴 길을 따라가자.
+      </p>
+      <button id="btn-start" class="primary">이야기 시작</button>
+    </div>
+  </div>
+
+  <!-- 인벤토리 팝업 -->
+  <div id="inventory-modal" class="overlay">
+    <div class="card">
+      <button class="close-x" data-close>✕</button>
+      <h2>🎒 가방</h2>
+      <div id="inv-list" class="inv-list"></div>
+      <p id="inv-empty" class="muted">아직 아무것도 없다. 방을 뒤져보자.</p>
+    </div>
+  </div>
+
+  <!-- 일지 (스토리 로그) -->
+  <div id="journal-modal" class="overlay">
+    <div class="card">
+      <button class="close-x" data-close>✕</button>
+      <h2>📖 견습생의 일지</h2>
+      <div id="journal-list" class="journal-list"></div>
+    </div>
+  </div>
+
+  <!-- 단서 / 메시지 모달 -->
+  <div id="clue-modal" class="overlay">
+    <div class="card">
+      <button class="close-x" data-close>✕</button>
+      <div id="clue-emoji" class="big-emoji"></div>
+      <h2 id="clue-title"></h2>
+      <p id="clue-body"></p>
+    </div>
+  </div>
+
+  <!-- 암호 입력 모달 -->
+  <div id="code-modal" class="overlay">
+    <div class="card">
+      <button class="close-x" data-close>✕</button>
+      <h2 id="code-title">🔒 자물쇠</h2>
+      <p id="code-hint" class="muted"></p>
+      <div id="code-display" class="code-display">＿＿＿</div>
+      <div class="keypad">
+        <button data-key="1">1</button><button data-key="2">2</button><button data-key="3">3</button>
+        <button data-key="4">4</button><button data-key="5">5</button><button data-key="6">6</button>
+        <button data-key="7">7</button><button data-key="8">8</button><button data-key="9">9</button>
+        <button data-key="clear" class="wide">지움</button><button data-key="0">0</button>
+        <button data-key="ok" class="ok">확인</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- 승리 화면 -->
+  <div id="win-screen" class="overlay">
+    <div class="card">
+      <div class="big-emoji">🕰️✨</div>
+      <h1>스승에게로</h1>
+      <p class="story">
+        바늘이 3시에 닿자 벽이 갈라지고, 그 너머로 눈부신 빛이 쏟아졌다.<br />
+        빛 속에서 익숙한 목소리가 들렸다. <b>"잘 왔다, 얘야."</b><br />
+        엘리아스는 시간을 되돌리는 시계를 완성했고, 그 속으로 걸어 들어간 것이다.<br />
+        당신은 스승이 남긴 길을 따라, 잃어버린 시간을 건넌다.
+      </p>
+      <p id="win-time" class="win-time"></p>
+      <button id="btn-replay" class="primary">다시 하기</button>
+    </div>
+  </div>
+
+  <script src="audio.js"></script>
+  <script src="game.js"></script>
+</body>
+</html>
